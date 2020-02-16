@@ -1,5 +1,6 @@
+
 <template lang="babel">
-   <div id="app">
+   <div class="quarkTemplate">
         {{ message }}
         </br>
         <span v-bind:title="hovermessage">
@@ -9,11 +10,12 @@
         <span v-if="seen">Now you see me</span>
         </br>
 
-        <ul>
-            <li v-for="(m,i) in samuelMWord">
-                {{ i + m.text }} <button v-on:click = "deleteMovie(i)" >X</button>
-            </li>
+        <ul v-bind:samuelMWord= "">
+          <li v-for="(m,i) in samuelMWord">
+           {{ i + m.text }} <button v-on:click = "deleteMovie(i)" >X</button>
+          </li>
         </ul>
+
 
         <p>{{ xelor }}</p>
         <button v-on:click="reverseMessage">Reverse Message</button>
@@ -29,49 +31,44 @@
     </div>
 </template>
 
+
+
+
 <script>
-import OtherComponent from "./OtherComponent.vue";
-
 export default {
-  components: {
-    OtherComponent
+  name: "movieitemComponent",
+
+  methods: {
+    reverseMessage: function() {
+      this.xelor = this.xelor
+        .split("")
+        .reverse()
+        .join("");
+    },
+
+    getFirstLetter: function() {
+      this.markplyer = this.markplyer[0];
+    },
+
+    deleteMovie: function(i) {
+      this.samuelMWord.splice(i, 1);
+    }
   },
-  data() {
-    return {
-      formulaire: "Hello there ! ",
-      markplyer: "Ho yeah, Mr Krabs",
-      message: "Magic !",
-      hovermessage: "You loaded this page on " + new Date().toLocaleString(),
-      seen: true,
 
-      xelor: "Laval , php , sonts palyndromes !",
-      samuelMWord: [
-        { index: 1, text: "Pulp Fiction" },
-        { index: 2, text: "Fresh" },
-        { index: 3, text: "Snakes on a Plane" }
-      ],
+  props: {
+    formulaire: String,
+    markplyer: String,
+    message: String,
+    hovermessage: String,
+    seen: Boolean,
 
-      methods: {
-        reverseMessage: function() {
-          this.xelor = this.xelor
-            .split("")
-            .reverse()
-            .join("");
-        },
-
-        getFirstLetter: function() {
-          this.markplyer = this.markplyer[0];
-        },
-        deleteMovie: function(i) {
-          this.samuelMWord.splice(i, 1);
-        }
-      }
-    };
+    xelor: String,
+    samuelMWord: Object
   }
 };
 </script>
 
-<style lang="stylus" scoped>
+<style  scoped>
 p {
   font-size: 2em;
   text-align: center;
