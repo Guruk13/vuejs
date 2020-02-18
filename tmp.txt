@@ -1,11 +1,2 @@
-{ index: 1, text: 'Pulp Fiction' },
-        { index: 2, text: 'Fresh },
-        { index: 3, text: 'Snakes on a Plane' }
 
 
-
-                <ul v-bind:samuelMWord= "">
-            <li v-for="(m,i) in samuelMWord">
-                {{ i + m.text }} <button v-on:click = "deleteMovie(i)" >X</button>
-            </li>
-        </ul>

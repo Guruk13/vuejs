@@ -1,58 +1,24 @@
 <template>
   <div id="app">
-    <movieitemComponent
-      formulaire="Hello there"
-      markplyer="Ho yeah, Mr Krabs"
-      message="Magic !"
-      hovermessage="You loaded this page on "
-      seen="true"
-      xelor="Laval , php , sonts palyndromes !"
-      
-    />
+    <img width="25%" src="./assets/logo.png">
+    <HelloWorld/>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-import App from "./App.vue";
-import VueRouter from "vue-router";
-
-//import HelloWorld from './components/HelloWorld.vue'
-import movieitemComponent from "./components/movieitem.vue";
+import HelloWorld from './components/HelloWorld'
 
 export default {
-  name: "app",
+  name: 'App',
   components: {
-    //HelloWorld,
-    movieitemComponent
+    HelloWorld
   }
-};
-
-var store = {
-  state: {
-    message: "Hello!"
-  },
-  setMessageAction(newValue) {
-    this.state.message = newValue;
-  },
-  clearMessageAction() {
-    this.state.message = "action B triggered";
-  }
-};
-
-var vmA = new Vue({
-  data: {
-    privateState: {},
-    sharedState: store.state
-  }
-});
+}
 </script>
-
-
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -60,3 +26,4 @@ var vmA = new Vue({
   margin-top: 60px;
 }
 </style>
+
